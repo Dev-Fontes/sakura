@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -50,7 +50,7 @@ export function Cartao() {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.alinha}>
-        <Button size="small" color="primary" variant="contained" onClick={() => setPetalas(petalas +1)}>
+        <Button size="small" color="primary" variant="contained" onClick={() => setPetalas(EhZero(petalas +1))}>
           Adcionar
         </Button>
         <Button size="small" color="secondary" variant="contained" onClick={() => setPetalas (EhZero(petalas -1))}>
@@ -65,6 +65,7 @@ export function Cartao() {
 
  function EhZero(petalas){
    if(petalas>=0){
+     ChamaCard(petalas)
     return petalas;
     }
    else{
@@ -72,3 +73,10 @@ export function Cartao() {
       return petalas = 0;
    }
 }
+
+function ChamaCard(value){
+  if(value == 10){
+    return <Link to="/resultado"/>;
+  }
+}
+

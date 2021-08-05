@@ -1,46 +1,55 @@
-import styled from "styled-components";
-import React from "react";
-import Button from '@material-ui/core/Button'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom';
+import { Cartao } from '../Workspace';
 
-export function CardSome (){
-    return(
-        <>
-            
-        <CardMain>
-            <CardButton>
-            <div>
-            <Button variant="contained" color="primary">Adcionar</Button>
-            </div>
-            <div>
-            <Button variant="contained" color="secondary">Remover</Button>
-            </div>
-            </CardButton>
-        </CardMain>
-            
-        </>
-        );
+
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 275,
+    margin: 'auto',
+    display: 'flex',
+    backgroundColor: '#ff8a9f',
+    flexDirection: 'column'
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bolder',
+    marginBottom: 24,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+  alinha:{
+      display: 'flex',
+      justifyContent: 'center',
+  },
+
+});
+
+export default function NewsCard() {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes.root}>
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          10 pétalas, requer um grande momento não acha?
+        </Typography>
+        <Typography variant="h5" component="h2">
+        Ganhou um chá com limão do Sr.Setra!
+        </Typography> 
+      </CardContent>
+      <CardActions className={classes.alinha}>
+        <Button size="small" variant="contained" onClick={()=> (<Link to={Cartao()}></Link>)} >Voltar</Button>
+      </CardActions>
+    </Card>
+  );
 }
 
-
-const CardButton = styled.div`
-height: 100%;
-position: relative;
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-content: flex-end;
-flex-wrap: wrap
-
-`
-
-const CardMain = styled.div`
-padding: 60px ;
-width: 320px;
-height: 220px;
-background-color: #dfdfdf;
-margin: 0 auto;
-border: 2px solid black;
-border-radius: 5px;
-font-size: 12px;
-
-`
